@@ -1,0 +1,17 @@
+[package]
+name = "kvstore"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+byteorder = "1.2"
+crc = "1.7" 
+clap = "4.5.23"
+
+[lib]
+name = "libkvstore"
+path = "src/lib.rs"
+
+[[bin]]
+name="kvstore"
+path="src/mem.rs"
