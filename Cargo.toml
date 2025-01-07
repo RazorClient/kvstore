@@ -7,11 +7,9 @@ edition = "2021"
 byteorder = "1.2"
 crc = "1.7" 
 clap = "4.5.23"
+serde = { version = "1.0", features = ["derive"] }
 
 [lib]
 name = "libkvstore"
 path = "src/lib.rs"
 
-[[bin]]
-name="kvstore"
-path="src/mem.rs"
