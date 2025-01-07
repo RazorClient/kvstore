@@ -154,12 +154,15 @@ impl KV {
         Ok(KeyValuePair { key, value })
     }
 
+/// insert kv pair into kv file
+/// 
     pub fn insert(&mut self, key: &ByteStr, value: &ByteStr) -> io::Result<()> {
         let position = self.insert_but_ignore_index(key, value)?;
         self.index.insert(key.to_vec(), position);
         Ok(())
     }
-
+/// Writes a key-value pair to the file without updating the in-memory index
+/// Handles the low-level work of writing the key-value pair to the file and returns the position
     pub fn insert_but_ignore_index(&mut self, key: &ByteStr, value: &ByteStr) -> io::Result<u64> {
         let mut f = BufWriter::new(&mut self.f);
         let key_len = key.len();
